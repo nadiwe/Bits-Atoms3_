@@ -19,5 +19,21 @@ function setup() {
 }
 
 function draw() {
-  background('#fae');
+  background(20,30,5);
+  fill('#fae');
+ 
+
+  textSize(32);
+text('Belgrade', width/2,height/2);
+fill(0, 102, 153);
+text('Belgrade', width/2,height/21 + 60);
+fill(0, 102, 153, 51);
+text('Belgrade', width/2,height/2+90);
+fill(250,120,50);
+
+  
+  circle(width/2,height/2,2.159518671*100);
+
+  //ellipse(10,10,5);
+
 }
