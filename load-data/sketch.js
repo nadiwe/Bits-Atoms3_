@@ -53,17 +53,24 @@ function getInfos(){
  const city = table.get(i*6+j,'current_city');
  const tempJetzt = table.get(i*6+j,'Max_Temperature_of_Warmest_Month');
  const tempFutur = table.get(i*6+j,'future_Max_Temperature_of_Warmest_Month');
- stroke(255, 0, 0);
- noFill();
- circle(positionX,positionY,tempFutur);
- circle(positionX,positionY,tempJetzt);
+ fill(255, 0, 0,70);
 
- noStroke();
+ stroke(255, 0, 0);
+ 
+ circle(positionX,positionY-tempFutur,tempFutur*2);
+ fill(255, 0, 0);
+
+//  noFill();
+noStroke();
+
+
+ circle(positionX,positionY-tempJetzt,tempJetzt*2);
+
  fill('red');
  textSize(12);
-text(city,positionX-20,positionY);
-text(tempJetzt,positionX-20,positionY+10);
-text(tempFutur,positionX-20,positionY+20);
+text(city,positionX,positionY+7);
+text(tempJetzt,positionX,positionY+17);
+text(tempFutur,positionX,positionY+27);
 
 
 
@@ -84,6 +91,7 @@ text(tempFutur,positionX-20,positionY+20);
     
 
 }
+
 
 function drawCityPoint(city, tempJetzt, tempFutur, positionX, positionY){
   fill('red');
