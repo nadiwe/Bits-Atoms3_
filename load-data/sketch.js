@@ -12,7 +12,6 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(canvasWidth, canvasHeight);
 
   //print(table.getRowCount() + ' total rows in table');
   //print(table.getColumnCount() + ' total columns in table');
@@ -24,7 +23,9 @@ function setup() {
 }
 
 function draw() { 
-  background(20,30,5);
+  createCanvas(windowWidth, windowHeight);
+console.log("windowWidth:" + windowWidth);
+  background('white');
 // firstTry();
 getInfos();
 // circle(0,40,50);
@@ -34,24 +35,40 @@ getInfos();
 
 function getInfos(){
 
- const distanceX = windowWidth/7
-     const distanceY = windowHeight/6
+ let distanceX = windowWidth/7
+ let distanceXFrame =  windowWidth-distanceX *2
 
-  for (let i =0; i<table.getRowCount();i++) {  //gibt die gesamtzahl der spalte an
-    const city = table.get(i,'current_city');
-    const tempJetzt = table.get(i,'Max_Temperature_of_Warmest_Month');
-    const tempFutur = table.get(i,'future_Max_Temperature_of_Warmest_Month');
+     let distanceY = windowHeight/6
+    //  console.log(city);
+  for (let i =0; i< 6;i++) {  //gibt die gesamtzahl der spalte an table.getRowCount()
+  
    
-  //   //console.log(city, tempJetzt, tempFutur);
+    // console.log(city, tempJetzt, tempFutur);
+    
+// console.log(city,i)
+
+    for (let j =0; j<5;j++) { //erstellt Y
+       let positionX = (distanceX * i)+ distanceX;
+ let positionY = (distanceY * j)+distanceY;
+ const city = table.get(i*6+j,'current_city');
+ const tempJetzt = table.get(i*6+j,'Max_Temperature_of_Warmest_Month');
+ const tempFutur = table.get(i*6+j,'future_Max_Temperature_of_Warmest_Month');
+ stroke(255, 0, 0);
+ noFill();
+ circle(positionX,positionY,tempFutur);
+ circle(positionX,positionY,tempJetzt);
+
+ noStroke();
+ fill('red');
+ textSize(12);
+text(city,positionX-20,positionY);
+text(tempJetzt,positionX-20,positionY+10);
+text(tempFutur,positionX-20,positionY+20);
 
 
-    for (let j =0; j<5;j++) {
-       const positionX = (distanceX * i) + 150;
- const positionY = (distanceY * j)+ 150;
- circle(positionX,positionY,20);
 
-    console.log('positionX: ' +positionX);
-    console.log('positionY: ' +positionY);
+    // console.log('positionX: ' +positionX);
+    // console.log('positionY: ' +positionY);
 
 
 
